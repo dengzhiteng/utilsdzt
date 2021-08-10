@@ -7,9 +7,14 @@ dayjs@^1.10.6:
   resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.6.tgz?cache=0&sync_timestamp=1625557417200&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
   integrity sha1-KIsqqC8thBimydTfWJjAc3rQKmM=
 
-js-dzt@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.nlark.com/js-dzt/download/js-dzt-1.0.5.tgz?cache=0&sync_timestamp=1628577604560&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjs-dzt%2Fdownload%2Fjs-dzt-1.0.5.tgz#425bac9f11d1e2805c674623a1b2d9dc2ceae30d"
-  integrity sha1-QlusnxHR4oBcZ0YjobLZ3Czq4w0=
-  dependencies:
-    dayjs "^1.10.6"
+fsevents@~2.3.2:
+  version "2.3.2"
+  resolved "https://registry.nlark.com/fsevents/download/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  integrity sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=
+
+rollup@^2.56.2:
+  version "2.56.2"
+  resolved "https://registry.nlark.com/rollup/download/rollup-2.56.2.tgz#a045ff3f6af53ee009b5f5016ca3da0329e5470f"
+  integrity sha1-oEX/P2r1PuAJtfUBbKPaAynlRw8=
+  optionalDependencies:
+    fsevents "~2.3.2"
