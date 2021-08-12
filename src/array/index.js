@@ -1,3 +1,4 @@
 export * from "./collections";
-export * from "./unique";
 export * from "./flatten";
+export * from "./sort";
+export * from "./unique";

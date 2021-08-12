@@ -58,7 +58,7 @@ export function deepClone(object) {
  * 获取url 中的参数
  * variable 字段名
  */
-export function getUrlParam(variable) {
+export function getUrlParams(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
   for (var i = 0; i < vars.length; i++) {
@@ -68,6 +68,18 @@ export function getUrlParam(variable) {
     }
   }
   return false;
+}
+
+function getUrl() {
+  var domain = "";
+  url = location.href;
+  offset = url.indexOf("?");
+  if (offset >= 0) {
+    domain = url.substring(0, offset);
+  } else {
+    domain = url;
+  }
+  return domain;
 }
 
 /***
