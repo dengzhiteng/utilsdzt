@@ -9,3 +9,10 @@
 - rollup-plugin-babel — 让我们可以使用 es6 新特性来编写代码
 - rollup-plugin-terser — 压缩 js 代码，包括 es6 代码压缩
 - rollup-plugin-eslint — js 代码检测
+
+## npm 包管理
+
+- npm login 或者 npm adduser // 登录
+- npm publish // 发布
+- npm unpublish js-dztt@1.0.1 //指定版本号
+- npm unpublish --force //强制删除

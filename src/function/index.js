@@ -1,19 +1,39 @@
 /**
- * 防抖函数
- *
- * @param {Function} fn - 需要防抖处理的函数
+ * 防抖函数 非立即  触发事件后函数不会立即执行，而是在 n 秒后执行
+ * @param {Function} func - 需要防抖处理的函数
  * @param {number} delay - 防抖间隔
- *
  * @returns {Function}
  */
+export function debounce(func, delay) {
+  let timer;
+  return function () {
+    let context = this; // 注意 this 指向
+    let args = arguments; // arguments中存着e
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, wait);
+  };
+}
 
 /**
  * 节流函数
- *
- * @param {Function} fn - 需要节流处理的函数
- * @param {number} threshold - 节流阀值
+ * @param {Function} func - 需要节流处理的函数
+ * @param {number} wait - 节流阀值
  * @returns {Function}
  */
+export function throttle(func, wait) {
+  let previous = 0;
+  return function () {
+    let now = Date.now();
+    let context = this;
+    let args = arguments;
+    if (now - previous > wait) {
+      func.apply(context, args);
+      previous = now;
+    }
+  };
+}
 
 /****
  * 深拷贝
