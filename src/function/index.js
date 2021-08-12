@@ -118,3 +118,18 @@ export function toDecimal2(x, unit) {
   x = x.substring(0, x.length - 1);
   return x;
 }
+
+/****
+ * 过滤对象中 boolean 为false 的值，比如 '' null false undefined
+ */
+export function filterObjectEmpty(params) {
+  const obj = {};
+  Object.keys(params).map((key) => {
+    if (params[key] instanceof Array) {
+      obj[key] = params[key];
+    } else {
+      params[key] && (obj[key] = params[key]);
+    }
+  });
+  return obj;
+}

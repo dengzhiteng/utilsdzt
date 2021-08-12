@@ -14,7 +14,7 @@ export function dateFormat(dateString, formats) {
 }
 
 /***
- * 当前信息
+ * 当前日期信息
  */
 export function currentDates() {
   return {
@@ -54,19 +54,4 @@ export function compareDate(date1, date2) {
   } else {
     return false;
   }
-}
-
-/****
- * 过滤对象中 boolean 为false 的值，比如 '' null false undefined
- */
-export function filterObjectEmpty(params) {
-  const obj = {};
-  Object.keys(params).map((key) => {
-    if (params[key] instanceof Array) {
-      obj[key] = params[key];
-    } else {
-      params[key] && (obj[key] = params[key]);
-    }
-  });
-  return obj;
 }
