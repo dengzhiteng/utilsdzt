@@ -1,4 +1,8 @@
 const dayjs = require("dayjs");
+const isoWeek = require("dayjs/plugin/isoWeek");
+const dayOfYear = require("dayjs/plugin/dayOfYear");
+dayjs.extend(dayOfYear);
+dayjs.extend(isoWeek);
 
 /***
  * 对日期进行格式化
@@ -17,38 +21,12 @@ export function currentDates() {
     timestamp: dayjs().valueOf(), // 单位是毫秒
     date: dayjs().format("YYYY-MM-DD"), // 日期
     year: dayjs().year(), // 获取年份
-    month: dayjs().month(), // 获取月份
+    month: dayjs().month() + 1, // 获取月份
     day: dayjs().date(), //获取月份里的日期
-    weeks: dayjs().isoWeekday(), // 周几
+    weekday: dayjs().isoWeekday(), // 周几
     dayOfYear: dayjs().dayOfYear(), //年份里第几天。
   };
 }
-
-// 月份英文格式;
-export const month_En = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Spt",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-// 周 英文格式
-export const weekDays_En = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
 
 /***
  * 计算两个日期之间的天数
@@ -64,15 +42,31 @@ export function daysBetween(date1, date2) {
 
 /***
  * 比较两个日期的大小
- * date1大 -1
- * date2大  0
+ * date1大 true
+ * date2大  false
+ * @return {boolean}
  */
 export function compareDate(date1, date2) {
   const oDate1 = new Date(date1);
   const oDate2 = new Date(date2);
   if (oDate1.getTime() > oDate2.getTime()) {
-    return -1;
+    return true;
   } else {
-    return 0;
+    return false;
   }
+}
+
+/****
+ * 过滤对象中 boolean 为false 的值，比如 '' null false undefined
+ */
+export function filterObjectEmpty(params) {
+  const obj = {};
+  Object.keys(params).map((key) => {
+    if (params[key] instanceof Array) {
+      obj[key] = params[key];
+    } else {
+      params[key] && (obj[key] = params[key]);
+    }
+  });
+  return obj;
 }

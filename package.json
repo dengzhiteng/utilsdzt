@@ -1,6 +1,6 @@
 {
   "name": "utools-dzt",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "./dist/bundle.js",
   "repository": "https://github.com.cnpmjs.org/dengzhiteng/js-dzt.git",
   "author": "dengzhiteng <dengzhiteng@jwx.com.cn>",
@@ -9,7 +9,8 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "dayjs": "^1.10.6"
+    "dayjs": "^1.10.6",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

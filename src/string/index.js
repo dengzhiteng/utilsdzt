@@ -43,3 +43,15 @@ export function spliceText(text, start, last, replaceText) {
   const reg = new RegExp("^(.{" + +start + "})(?:\\d+)(.{" + +last + "})$");
   return `${text}`.replace(reg, "$1" + replaceText + "$2");
 }
+
+/**
+ * 判断是否是字符串
+ * @param {string} str
+ * @returns {Boolean}
+ */
+export function isString(str) {
+  if (typeof str === "string" || str instanceof String) {
+    return true;
+  }
+  return false;
+}

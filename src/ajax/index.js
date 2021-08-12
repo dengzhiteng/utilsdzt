@@ -1,5 +1,5 @@
 /**
- *
+ * 原生的 请求
  * @param {*} option
  */
 export function ajax(option) {
@@ -37,7 +37,7 @@ export function ajax(option) {
   xhr.send(option.data);
 }
 /**
- * 封装一个原生的post 请求
+ * 原生post 请求
  * @param {*} url
  * @param {*} data
  * @param {*} success
@@ -61,7 +61,7 @@ export function post(url, data, success) {
   xhr.send(data);
 }
 /**
- * 封装原生请求
+ * 原生get请求
  * @param {*} url
  * @param {*} data
  * @param {*} success

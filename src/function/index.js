@@ -37,24 +37,21 @@ export function throttle(func, wait) {
 
 /****
  * 深拷贝
- *
  */
-export function deepCopy(obj) {
-  let objClone = Array.isArray(obj) ? [] : {};
-  if (obj && typeof obj === "object") {
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        //判断ojb子元素是否为对象，如果是，递归复制
-        if (obj[key] && typeof obj[key] === "object") {
-          objClone[key] = deepClone(obj[key]);
-        } else {
-          //如果不是，简单复制
-          objClone[key] = obj[key];
-        }
-      }
+export function deepClone(object) {
+  let resultObject = {};
+  for (let obj in object) {
+    if (typeof object[obj] == "object" && !Array.isArray(object[obj])) {
+      let x = {};
+      x[obj] = deepClone(object[obj]);
+      Object.assign(resultObject, x);
+    } else {
+      let x = {};
+      x[obj] = object[obj];
+      Object.assign(resultObject, x);
     }
   }
-  return objClone;
+  return resultObject;
 }
 
 /***
@@ -71,4 +68,53 @@ export function getUrlParam(variable) {
     }
   }
   return false;
+}
+
+/***
+ * 输入一个身份证号码，等到 出生日期，性别，年龄
+ * UserCard
+ */
+export function getIdCardInfo(UserCard) {
+  //出生日期
+  const birthDay =
+    UserCard.substring(6, 10) +
+    "-" +
+    UserCard.substring(10, 12) +
+    "-" +
+    UserCard.substring(12, 14);
+  //性别
+  const sex = parseInt(UserCard.substr(16, 1)) % 2 == 1 ? "男" : "女";
+  //年龄
+  let myDate = new Date();
+  let month = myDate.getMonth() + 1;
+  let day = myDate.getDate();
+  let age = myDate.getFullYear() - UserCard.substring(6, 10) - 1;
+  if (
+    UserCard.substring(10, 12) < month ||
+    (UserCard.substring(10, 12) == month && UserCard.substring(12, 14) <= day)
+  ) {
+    age++;
+  }
+
+  return {
+    birthDay,
+    age,
+    sex,
+  };
+}
+
+/**
+ * 保留2位小数 （截取) 默认保留2位，可以通过unit 参数进行设置
+ * @param {*} x
+ * @param {*} [unit]
+ * @returns
+ */
+export function toDecimal2(x, unit) {
+  const len = unit ? unit : 2;
+  if ((!x && x != 0) || isNaN(+x)) {
+    return "--";
+  }
+  x = (+x).toFixed(len + 1);
+  x = x.substring(0, x.length - 1);
+  return x;
 }
