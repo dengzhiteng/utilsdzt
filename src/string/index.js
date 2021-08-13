@@ -2,8 +2,6 @@
  * 金额每三位正数添加逗号，支持保留小数
  * @example
  * ```js
- * toDecimal(10000000000000, 2) // 10,000,000,000.00
- * ```
  * @param {string/number} textt - 需要被替换的文本
  * @param {number} len - 保留小数位数
  * @returns {string}
