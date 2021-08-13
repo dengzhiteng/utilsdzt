@@ -16,3 +16,10 @@
 - npm publish // 发布
 - npm unpublish js-dztt@1.0.1 //指定版本号
 - npm unpublish --force //强制删除
+
+## 说明
+
+- 先进性单元测试，测试通过之后再进行打包发布
+
+-yarn add jest babel-jest babel-core babel-preset-env regenerator-runtime -D
+babel-jest、 babel-core、 regenerator-runtime、babel-preset-env 这几个依赖是为了让我们可以使用 ES6 的语法特性进行单元测试，ES6 提供的 import 来导入模块的方式，Jest 本身是不支持的。

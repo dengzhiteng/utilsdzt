@@ -7,7 +7,7 @@ import clear from "rollup-plugin-clear"; // 清空文件夹插件
 import { uglify } from "rollup-plugin-uglify"; // 输出libary代码压缩
 
 export default {
-  input: "./index.js",
+  input: "./src/index.js",
   output: {
     file: "./dist/bundle.js",
     format: "cjs",
@@ -16,7 +16,7 @@ export default {
   plugins: [
     resolve(),
     commonjs(),
-    terser(),
+    // terser(),
     clear({
       targets: ["dist"],
     }),
@@ -27,5 +27,5 @@ export default {
     }),
   ],
   //告诉rollup不要将此dayjs打包，而作为外部依赖，
-  external: ["dayjs"],
+  external: ["dayjs", "xlsx"],
 };

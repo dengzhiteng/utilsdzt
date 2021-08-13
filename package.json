@@ -1,21 +1,28 @@
 {
   "name": "utools-dzt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "./dist/bundle.js",
   "repository": "https://github.com.cnpmjs.org/dengzhiteng/js-dzt.git",
   "author": "dengzhiteng <dengzhiteng@jwx.com.cn>",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "unit": "jest"
   },
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
     "dayjs": "^1.10.6",
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.0.6",
+    "babel-preset-env": "^1.7.0",
     "core-js": "3",
+    "jest": "^27.0.6",
+    "regenerator-runtime": "^0.13.9",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -28,5 +35,8 @@
   ],
   "keywords": [
     "dayjs"
-  ]
+  ],
+  "jest": {
+    "verbose": true
+  }
 }
