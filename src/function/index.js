@@ -38,20 +38,29 @@ export function throttle(func, wait) {
 /****
  * 深拷贝
  */
-export function deepClone(object) {
-  let resultObject = {};
-  for (let obj in object) {
-    if (typeof object[obj] == "object" && !Array.isArray(object[obj])) {
-      let x = {};
-      x[obj] = deepClone(object[obj]);
-      Object.assign(resultObject, x);
-    } else {
-      let x = {};
-      x[obj] = object[obj];
-      Object.assign(resultObject, x);
+export function deepClone(obj) {
+  // 过滤一些特殊情况
+  if (obj === null) return null;
+  if (typeof obj !== "object") return obj;
+  if (typeof window !== "undefined" && window.JSON) {
+    // 浏览器环境下 并支持window.JSON 则使用 JSON
+    return JSON.parse(JSON.stringify(obj));
+  }
+  if (obj instanceof RegExp) {
+    // 正则
+    return new RegExp(obj);
+  }
+  if (obj instanceof Date) {
+    // 日期
+    return new Date(obj);
+  }
+  let newObj = new obj.constructor(); // 不直接创建空对象的目的：克隆的结果和之前保持所属类  =》 即能克隆普通对象，又能克隆某个实例对象
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = deepClone(obj[key]);
     }
   }
-  return resultObject;
+  return newObj;
 }
 
 /***
