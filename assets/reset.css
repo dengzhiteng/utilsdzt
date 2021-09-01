@@ -25,12 +25,6 @@ td {
   padding: 0;
 }
 
-ol,
-ul,
-dl {
-  list-style: none;
-}
-
 html,
 body {
   width: 100%;
@@ -46,6 +40,12 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, Arial, sans-serif;
+}
+
+ol,
+ul,
+dl {
+  list-style: none;
 }
 
 a,
