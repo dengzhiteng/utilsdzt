@@ -1,9 +1,9 @@
 {
-  "name": "utools-dzt",
-  "version": "1.0.5",
+  "name": "utilsdzt",
+  "version": "1.0.0",
   "main": "./dist/bundle.js",
-  "repository": "https://github.com.cnpmjs.org/dengzhiteng/js-dzt.git",
-  "author": "dengzhiteng <dengzhiteng@jwx.com.cn>",
+  "repository": "https://github.com.cnpmjs.org/dengzhiteng/utilsdzt.git",
+  "author": "dengzhiteng",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",

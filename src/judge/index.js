@@ -1,9 +1,7 @@
-/** @module 类型判断-type */
-
 /**
  * 判断是否是数组
- * @param {Array} arg
- * @returns {Boolean}
+ * @param {*arg}  
+ * @returns Boolean
  */
 export function isArray(arg) {
   if (typeof Array.isArray === "undefined") {
@@ -14,7 +12,7 @@ export function isArray(arg) {
 
 /**
  * 判断是否是字符串
- * @param {string} str
+ * @param {*} str 
  * @returns {Boolean}
  */
 export function isString(str) {
@@ -24,9 +22,9 @@ export function isString(str) {
   return false;
 }
 
-/***
+/**
  * 判断是否是Url
- * @param {string} path
+ * @param {*} path 
  * @returns {Boolean}
  */
 export function isUrl(path) {

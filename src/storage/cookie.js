@@ -1,7 +1,5 @@
-/** @module 存储相关-storage */
 /**
- * 设置Cookie
- *
+ * @description 设置Cookie
  * @param {string} key - 存储的键
  * @param {any} value - 存储的值
  * @param {number} [day] - 过期时间
@@ -19,8 +17,7 @@ export function setCookie(key, value, day) {
 }
 
 /**
- * 获取Cookie
- *
+ * @description 获取Cookie
  * @param key
  */
 export function getCookie(key) {
@@ -30,8 +27,7 @@ export function getCookie(key) {
 }
 
 /**
- * 清除Cookie
- *
+ * @description 清除Cookie
  * @param {string} key - 存储的键
  * @param {string} [domain] - 共享Cookie域名
  */

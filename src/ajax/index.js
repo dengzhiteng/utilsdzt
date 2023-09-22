@@ -1,5 +1,5 @@
 /**
- * 原生的 请求
+ * @description 原生的 请求
  * @param {*} option
  */
 export function ajax(option) {
@@ -36,8 +36,9 @@ export function ajax(option) {
   //4.请求主体发送(get请求为空，或者写null，post请求数据写在这里，如果没有数据，直接为空或者写null)
   xhr.send(option.data);
 }
+
 /**
- * 原生post 请求
+ * @description 原生post 请求
  * @param {*} url
  * @param {*} data
  * @param {*} success
@@ -60,8 +61,9 @@ export function post(url, data, success) {
   //4.请求主体发送(get请求为空，或者写null，post请求数据写在这里，如果没有数据，直接为空或者写null)
   xhr.send(data);
 }
+
 /**
- * 原生get请求
+ * @description 原生get请求
  * @param {*} url
  * @param {*} data
  * @param {*} success

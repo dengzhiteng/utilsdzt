@@ -1,7 +1,5 @@
 /**
- * 金额每三位正数添加逗号，支持保留小数
- * @example
- * ```js
+ * @description 金额每三位正数添加逗号，支持保留小数
  * @param {string/number} textt - 需要被替换的文本
  * @param {number} len - 保留小数位数
  * @returns {string}
@@ -26,11 +24,7 @@ export function toDecimal(text, len) {
 }
 
 /**
- * 隐藏/替换字符串中间几位
- * @example
- * ```js
- * spliceText(18255558888, 3, 4, '****') // 182\*\*\*\*8888
- * ```
+ * @description 隐藏/替换字符串中间几位
  * @param {string/number} text - 需要被替换的文本
  * @param {number} start - start从前往后第几位
  * @param {number} last - end从后往前第几位

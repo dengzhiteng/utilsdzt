@@ -1,51 +1,58 @@
-/** @module 存储相关-storage */
 /**
- * localStorage获取值
- *
- * @param {string} key - 存储的键
- * @param {number} [day] - 有效天数
+ * @description 获取localStorage值
+ * @param {string} key 
  */
-export function getStorage(key, day) {
-  const dateStr = localStorage.getItem(key);
-  if (!dateStr) return "";
-  if (!day) return dateStr;
-  const obj = JSON.parse(dateStr);
-  return new Date().getTime() - Number(obj.date) > 86400000 * day
-    ? ""
-    : obj.value;
-}
-
-/**
- * localStorage设置值
- *
- * @param {string} key - 存储的键
- * @param {any} value - 存储的值
- * @param {number} [day] - 有效天数
- */
-export function setStorage(key, value, day) {
-  if (!day) {
-    localStorage.setItem(key, value);
+export const getStorage = (key) => {
+  let data = localStorage.getItem(key);
+  if (!data) return;
+  data = JSON.parse(data);
+  const day = data.validDay ? data.validDay : 0
+  const isValidDay = new Date().getTime() - Number(data.saveTime) > 86400000 * day
+  if (isValidDay) {
+    return data.value
   } else {
-    const params = {
-      date: new Date().getTime(),
-      value,
-    };
-    localStorage.setItem(key, JSON.stringify(params));
+    localStorage.removeItem(key)
+    return false
   }
 }
 
+
 /**
- * localStorage移除键为key的存储
- *
- * @param {string} key - 存储的键
+ * @description  localStorage 设置值
+ * @param {*string} key 存储的键
+ * @param {*any} value 存储的值
+ * @param {*number} validDay 有效天数
  */
-export function removeStorage(key) {
-  localStorage.removeItem(key);
+export const setStorage = (key, value, validDay) => {
+  if (!validDay) {
+    localStorage.setItem(key, value);
+    return true
+  }
+  const params = {
+    saveTime: new Date().getTime(),
+    validDay,
+    value,
+  };
+  localStorage.setItem(key, JSON.stringify(params));
+  return true
 }
 
 /**
- * localStorage清空存储
+ * @description 移除
+ * @param {string} key 存储的键
  */
-export function clearStorage() {
+export const removeStorage = (key) => {
+  if (!key) {
+    throw new Error('key is required');
+  }
+  localStorage.removeItem(key);
+  return true
+}
+
+/**
+ * @description 清空所有
+ */
+export const clearAllStorage = () => {
   localStorage.clear();
+  return true
 }

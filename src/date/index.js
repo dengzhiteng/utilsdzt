@@ -4,35 +4,39 @@ const dayOfYear = require("dayjs/plugin/dayOfYear");
 dayjs.extend(dayOfYear);
 dayjs.extend(isoWeek);
 
-/***
- * 对日期进行格式化
- * dateString 日期
- * formats  格式
+/**
+ * @description 对日期进行格式化
+ * @param {*} dateString  日期
+ * @param {*} formats 格式
+ * @returns 
  */
-export function dateFormat(dateString, formats) {
+export const dateFormat=(dateString, formats)=> {
   return dayjs(dateString).format(formats || "YYYY-MM-DD");
 }
 
-/***
- * 当前日期信息
+/**
+ * @description 当前日期信息
+ * @returns 
  */
-export function currentDates() {
+export const currentDates=()=> {
   return {
-    timestamp: dayjs().valueOf(), // 单位是毫秒
-    date: dayjs().format("YYYY-MM-DD"), // 日期
-    year: dayjs().year(), // 获取年份
-    month: dayjs().month() + 1, // 获取月份
-    day: dayjs().date(), //获取月份里的日期
-    weekday: dayjs().isoWeekday(), // 周几
-    dayOfYear: dayjs().dayOfYear(), //年份里第几天。
+    timestamp: dayjs().valueOf(), // 单位:毫秒
+    date: dayjs().format("YYYY-MM-DD"),
+    year: dayjs().year(),
+    month: dayjs().month() + 1,
+    day: dayjs().date(),
+    weekday: dayjs().isoWeekday(),
+    dayOfYear: dayjs().dayOfYear(),
   };
 }
 
-/***
- * 计算两个日期之间的天数
- * 返回number day
+/**
+ * @description 计算两个日期之间相差的天数
+ * @param {*} date1 
+ * @param {*} date2 
+ * @returns number
  */
-export function daysBetween(date1, date2) {
+export const daysBetween=(date1, date2)=> {
   const aDate = new Date(date1);
   const bDate = new Date(date2);
   const aDay = 24 * 60 * 60 * 1000;
@@ -40,18 +44,14 @@ export function daysBetween(date1, date2) {
   return diffDay;
 }
 
-/***
- * 比较两个日期的大小
- * date1大 true
- * date2大  false
- * @return {boolean}
+/**
+ * @description 比较两个日期的大小
+ * @param {*} date1 
+ * @param {*} date2 
+ * @returns Boolean
  */
-export function compareDate(date1, date2) {
+export const compareDate=(date1, date2)=> {
   const oDate1 = new Date(date1);
   const oDate2 = new Date(date2);
-  if (oDate1.getTime() > oDate2.getTime()) {
-    return true;
-  } else {
-    return false;
-  }
+  return oDate1.getTime() > oDate2.getTime()
 }
